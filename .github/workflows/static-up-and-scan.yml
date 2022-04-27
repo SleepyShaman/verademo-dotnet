@@ -4,7 +4,7 @@ on: workflow_dispatch
 jobs:
   static_analysis:
     name: Static Analysis
-    runs-on: windows-latest
+    runs-on: linux-latest
     
     steps:
       - name: Check out main branch
