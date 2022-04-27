@@ -15,7 +15,7 @@ jobs:
         with:
           appname: 'VeraDemo-dotNet'
           createprofile: true
-          filepath: 'verademo-dotnet'
+          filepath: 'Verademo-Dotnet/*.*'
           vid: '${{ secrets.API_ID }}'
           vkey: '${{ secrets.API_KEY }}'
           createsandbox: 'true'
