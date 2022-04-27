@@ -1,0 +1,26 @@
+name: Veracode Static Analysis Demo
+on: workflow_dispatch
+    
+jobs:
+  static_analysis:
+    name: Static Analysis
+    runs-on: windows-latest
+    
+    steps:
+      - name: Check out main branch
+        uses: actions/checkout@v2
+          
+      - name: Veracode Upload And Scan
+        uses: veracode/veracode-uploadandscan-action@0.2.1
+        with:
+          appname: 'VeraDemo-dotNet'
+          createprofile: true
+          filepath: 'verademo-dotnet'
+          vid: '${{ secrets.API_ID }}'
+          vkey: '${{ secrets.API_KEY }}'
+          createsandbox: 'true'
+          sandboxname: 'testbox'
+#          scantimeout: 0
+#          exclude: '*.js'
+#          include: '*.war'
+          criticality: 'VeryHigh'
