@@ -16,7 +16,7 @@ namespace Verademo_dotnet
                 Response.Write(Request.QueryString["text"]);
 
                 // good code
-                Response.Write(System.Net.WebUtility.HtmlEncode(Request.QueryString["text"]));
+                // Response.Write(System.Net.WebUtility.HtmlEncode(Request.QueryString["text"]));
             }
         }
     }
