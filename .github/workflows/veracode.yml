@@ -29,30 +29,29 @@ jobs:
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
     runs-on: ubuntu-latest
     
-    strategy:
-      matrix:
-        dotnet-version: ['5.0.x', '6.0.x']
+#    strategy:
+#      matrix:
+#        dotnet-version: ['5.0.x', '6.0.x']
         
     steps:
 
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it and copies all sources into ZIP file for submitting for analysis. Replace this section with your applications build steps
     - uses: actions/checkout@v3
-#      with:
-#        repository: 'SleepyShaman/verademo-dotnet'
+      with:
+        repository: 'SleepyShaman/verademo-dotnet'
 
 #    - uses: actions/checkout@v3
     - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
       uses: actions/setup-dotnet@v2
       with:
           dotnet-version: '6.0.x'
-          repository: 'SleepyShaman/verademo-dotnet'
 #          dotnet-version: ${{ matrix.dotnet-version }}
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore $GITHUB_WORKSPACE
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build --configuration Release --no-restore $GITHUB_WORKSPACE
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test --no-restore --verbosity normal $GITHUB_WORKSPACE
 
     - run: zip -r veracode-scan-target.zip ./
     
