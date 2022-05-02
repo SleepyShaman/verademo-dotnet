@@ -37,14 +37,15 @@ jobs:
 
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it and copies all sources into ZIP file for submitting for analysis. Replace this section with your applications build steps
     - uses: actions/checkout@v3
-      with:
-        repository: 'SleepyShaman/verademo-dotnet'
+#      with:
+#        repository: 'SleepyShaman/verademo-dotnet'
 
 #    - uses: actions/checkout@v3
     - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
       uses: actions/setup-dotnet@v2
       with:
           dotnet-version: '6.0.x'
+          repository: 'SleepyShaman/verademo-dotnet'
 #          dotnet-version: ${{ matrix.dotnet-version }}
     - name: Install dependencies
       run: dotnet restore
