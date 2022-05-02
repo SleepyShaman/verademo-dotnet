@@ -47,11 +47,14 @@ jobs:
           dotnet-version: '6.0.x'
 #          dotnet-version: ${{ matrix.dotnet-version }}
     - name: Install dependencies
-      run: dotnet restore $GITHUB_WORKSPACE
+      run: |
+        pwd
+        ls
+        dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore $GITHUB_WORKSPACE
+      run: dotnet build --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-restore --verbosity normal $GITHUB_WORKSPACE
+      run: dotnet test --no-restore --verbosity normal
 
     - run: zip -r veracode-scan-target.zip ./
     
