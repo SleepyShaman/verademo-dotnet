@@ -41,20 +41,20 @@ jobs:
         repository: 'SleepyShaman/verademo-dotnet'
 
 #    - uses: actions/checkout@v3
-    - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
-      uses: actions/setup-dotnet@v2
-      with:
+#    - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+#      uses: actions/setup-dotnet@v2
+#      with:
 #          dotnet-version: '6.0.x'
-          dotnet-version: ${{ matrix.dotnet-version }}
-    - name: Install dependencies
-      run: |
-        pwd
-        ls
-        dotnet restore
-    - name: Build
-      run: dotnet build --configuration Release
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+#          dotnet-version: ${{ matrix.dotnet-version }}
+#    - name: Install dependencies
+#      run: |
+#        pwd
+#        ls
+#        dotnet restore
+#    - name: Build
+#      run: dotnet build --configuration Release
+#    - name: Test
+#      run: dotnet test --no-restore --verbosity normal
 
     - run: zip -r veracode-scan-target.zip ./
     
