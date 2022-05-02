@@ -31,7 +31,7 @@ jobs:
     
     strategy:
       matrix:
-        dotnet-version: ['3.0', '3.1.x', '5.0.x' ]
+        dotnet-version: ['3.1.x', '4.5.x', '5.0.x' ]
         
     steps:
 
@@ -45,6 +45,7 @@ jobs:
     # download the Veracode Static Analysis Pipeline scan jar
     - run: curl --silent --show-error --fail -O https://downloads.veracode.com/securityscan/pipeline-scan-LATEST.zip
     - run: unzip -o pipeline-scan-LATEST.zip
+    - run: unzip -o veracode-scan-target.zip
 
 #    - uses: actions/checkout@v3
     - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
